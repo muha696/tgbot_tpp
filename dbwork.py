@@ -92,6 +92,16 @@ class DBbot:
             result = self.cur.execute(f"""SELECT * FROM check_att WHERE student_id = '{student_id}' AND discipline_id = '{disp_id}'""").fetchall()
         return bool(len(result))
 
+    def check_tutor_disciplines(self, tutor_id):
+        with self.con:
+            result = self.cur.execute(f"""SELECT * FROM disciplines WHERE tutor = '{tutor_id}'""").fetchall()
+        return bool(len(result))
+
+    def delete_to_check(self, student_id, discipline_id):
+        with self.con:
+            result = self.cur.execute(f"""DELETE FROM check_att WHERE student_id = '{student_id}' AND discipline_id = {discipline_id}""")
+        return result
+
 
 
     def select_info(self, data, table, column, value):
