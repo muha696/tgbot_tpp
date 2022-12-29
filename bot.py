@@ -6,7 +6,7 @@ from random_code import random_tutor_code
 import emoji
 
 def check_admin(user_name):
-    if user_name == 'kilongole1':
+    if user_name == 'admin_name':
         result = True
     else:
         result = False
